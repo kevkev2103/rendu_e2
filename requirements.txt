@@ -1,0 +1,7 @@
+transformers
+torch
+requests
+pandas
+matplotlib
+seaborn
+numpy
