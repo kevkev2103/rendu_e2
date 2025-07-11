@@ -155,8 +155,8 @@ class SentimentAnalyzer:
         return results
     
     def test_api_model(self, model_key: str) -> Dict:
-        """Teste un modèle via l'API Hugging Face (gratuit)"""
-        print(f"🌐 Test de l'API: {model_key}")
+        """Teste un modèle via l'API Hugging Face"""
+        print(f"Test de l'API: {model_key}")
         
         model_info = self.models[model_key]
         results = {
@@ -235,8 +235,8 @@ class SentimentAnalyzer:
             # Affichage des résultats
             if result['responses']:
                 avg_time = sum(result['response_times']) / len(result['response_times'])
-                print(f"✅ Temps de réponse moyen: {avg_time:.3f}s")
-                print(f"✅ Nombre de tests réussis: {len(result['responses'])}")
+                print(f" Temps de réponse moyen: {avg_time:.3f}s")
+                print(f"Nombre de tests réussis: {len(result['responses'])}")
                 
                 # Afficher quelques exemples
                 for i, resp in enumerate(result['responses'][:3]):
@@ -245,7 +245,7 @@ class SentimentAnalyzer:
                 print("❌ Aucun test réussi")
             
             if result['errors']:
-                print(f"⚠️  Erreurs: {len(result['errors'])}")
+                print(f"Erreurs: {len(result['errors'])}")
                 for error in result['errors'][:2]:  # Afficher seulement les 2 premières erreurs
                     print(f"   - {error}")
         
@@ -282,7 +282,7 @@ class SentimentAnalyzer:
     def plot_results(self):
         """Génère des graphiques de comparaison"""
         if not self.results:
-            print("❌ Aucun résultat à afficher")
+            print("Aucun résultat à afficher")
             return
         
         # Préparation des données pour les graphiques
@@ -334,11 +334,11 @@ class SentimentAnalyzer:
         """Sauvegarde les résultats détaillés en JSON"""
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(self.results, f, indent=2, ensure_ascii=False)
-        print(f"💾 Résultats détaillés sauvegardés dans '{filename}'")
+        print(f"Résultats détaillés sauvegardés dans '{filename}'")
 
 def main():
     """Fonction principale"""
-    print("🎯 BENCHMARK D'ANALYSE DE SENTIMENTS - HUGGING FACE")
+    print("BENCHMARK D'ANALYSE DE SENTIMENTS - HUGGING FACE")
     print("=" * 60)
     print("Ce script compare 3 modèles d'analyse de sentiments:")
     print("1. DistilBERT (anglais)")
@@ -358,7 +358,7 @@ def main():
     use_api = choice == "2"
     
     if use_api:
-        print("\n⚠️  Mode API sélectionné - Limite de 30 requêtes/jour")
+        print("\nMode API sélectionné - Limite de 30 requêtes/jour")
         print("   Les tests peuvent échouer si la limite est atteinte")
     
     # Lancement du benchmark
@@ -366,7 +366,7 @@ def main():
     
     # Génération du tableau comparatif
     print("\n" + "=" * 60)
-    print("📋 TABLEAU COMPARATIF")
+    print("TABLEAU COMPARATIF")
     print("=" * 60)
     
     comparison_df = analyzer.generate_comparison_table()
@@ -376,7 +376,7 @@ def main():
     analyzer.save_detailed_results()
     
     # Génération des graphiques
-    print("\n📊 Génération des graphiques...")
+    print("\n Génération des graphiques...")
     analyzer.plot_results()
     
     # Affichage des recommandations
@@ -397,7 +397,7 @@ def main():
     if best_model:
         print(f"🏆 Modèle le plus rapide: {best_model} ({best_time:.3f}s)")
     
-    print("\n📝 Recommandations d'usage:")
+    print("\nRecommandations d'usage:")
     print("- Pour l'anglais uniquement: DistilBERT (rapide et précis)")
     print("- Pour le multilingue: BERT multilingue (5 étoiles)")
     print("- Pour les réseaux sociaux: RoBERTa Twitter")

@@ -49,22 +49,22 @@ Trois modèles ont été sélectionnés pour leur pertinence et leur diversité 
 ### Analyse des Performances
 
 **DistilBERT English :**
-- ✅ Plus rapide (0.15s en moyenne)
-- ✅ Plus précis (91.3%)
-- ✅ Modèle le plus léger
-- ❌ Anglais uniquement
+- Plus rapide (0.15s en moyenne)
+- Plus précis (91.3%)
+- Modèle le plus léger
+- Anglais uniquement
 
 **BERT Multilingue :**
-- ✅ Support de 5 langues
-- ✅ Classification granulaire (5 étoiles)
-- ✅ Adapté aux avis clients
-- ❌ Plus lent et plus lourd
+- Support de 5 langues
+- Classification granulaire (5 étoiles)
+- Adapté aux avis clients
+- Plus lent et plus lourd
 
 **RoBERTa Twitter :**
-- ✅ Spécialisé réseaux sociaux
-- ✅ Classification ternaire équilibrée
-- ✅ Bon compromis performance/taille
-- ❌ Anglais uniquement
+- Spécialisé réseaux sociaux
+- Classification ternaire équilibrée
+- Bon compromis performance/taille
+- Anglais uniquement
 
 ## Recommandations
 
@@ -96,10 +96,8 @@ La plateforme Hugging Face facilite grandement l'accès à ces technologies, off
 
 ### Compétences Démontrées
 
-- ✅ **C6 :** Organisation d'une veille technologique structurée
-- ✅ **C7 :** Benchmark comparatif de services IA
-- ✅ **C8 :** Paramétrage et intégration via API Hugging Face
+- **C6 :** Organisation d'une veille technologique structurée
+- **C7 :** Benchmark comparatif de services IA
+- **C8 :** Paramétrage et intégration via API Hugging Face
 
----
-
-*Synthèse réalisée dans le cadre de la certification IA - Bloc de compétence 2 - E2* 
+ 

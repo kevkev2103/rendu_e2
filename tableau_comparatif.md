@@ -45,7 +45,7 @@
 |-----------|------------|------------------|-----------------|
 | **RAM minimale** | 2 GB | 3 GB | 3 GB |
 | **Espace disque** | 268 MB | 438 MB | 499 MB |
-| **CPU** | 2 cœurs | 2 cœurs | 2 cœurs |
+| **CPU** | 2 coeurs | 2 coeurs | 2 coeurs |
 | **GPU (optionnel)** | 2 GB VRAM | 3 GB VRAM | 3 GB VRAM |
 
 ## Coûts et Limites
@@ -123,6 +123,3 @@
 - **Inconvénients :** Anglais uniquement
 - **Idéal pour :** Monitoring social media
 
----
-
-*Tableau généré automatiquement par le benchmark - Certification IA E2* 

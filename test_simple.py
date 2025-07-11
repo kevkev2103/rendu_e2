@@ -50,11 +50,11 @@ def test_simple():
         print("   python sentiment_analysis_benchmark.py")
         
     except Exception as e:
-        print(f"❌ Erreur lors du test: {str(e)}")
-        print("\n🔧 Solutions possibles:")
+        print(f" Erreur lors du test: {str(e)}")
+        print("\n Solutions possibles:")
         print("1. Vérifiez votre connexion internet")
         print("2. Installez les dépendances: pip install -r requirements.txt")
-        print("3. Vérifiez que vous avez suffisamment d'espace disque (~500MB)")
+        print("3. Vérifiez que vous avez suffisamment d'espace disque")
 
 if __name__ == "__main__":
     test_simple() 
