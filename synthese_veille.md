@@ -100,4 +100,3 @@ La plateforme Hugging Face facilite grandement l'accès à ces technologies, off
 - **C7 :** Benchmark comparatif de services IA
 - **C8 :** Paramétrage et intégration via API Hugging Face
 
- 
