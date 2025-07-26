@@ -1,7 +1,10 @@
-transformers
-torch
-requests
-pandas
-matplotlib
-seaborn
-numpy
+requests>=2.25.0
+pandas>=1.5.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+feedparser>=6.0.0
+transformers>=4.20.0
+torch>=2.0.0
+numpy>=1.21.0
+streamlit>=1.25.0
+plotly>=5.15.0 
