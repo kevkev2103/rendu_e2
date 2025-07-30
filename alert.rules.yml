@@ -1,0 +1,90 @@
+# Règles d'alerte pour le service d'analyse de sentiment
+# Compétence C8 : Paramétrage d'un service d'IA
+
+groups:
+  - name: sentiment_analysis_alerts
+    rules:
+      # Alerte sur la latence élevée
+      - alert: HighSentimentAnalysisLatency
+        expr: histogram_quantile(0.95, rate(sentiment_analysis_duration_seconds_bucket[5m])) > 0.15
+        for: 5m
+        labels:
+          severity: warning
+          service: sentiment-analysis
+          component: ai-service
+        annotations:
+          summary: "Latence élevée détectée sur l'analyse de sentiment"
+          description: "La latence du 95ème percentile pour l'analyse de sentiment est de {{ $value | humanizeDuration }} sur les 5 dernières minutes, ce qui dépasse le seuil de 150ms."
+          impact: "Les utilisateurs peuvent expérimenter des temps de réponse lents"
+          action: "Vérifier les performances du modèle et les ressources système"
+
+      # Alerte sur le taux d'erreur élevé
+      - alert: HighSentimentAnalysisErrorRate
+        expr: rate(sentiment_analysis_errors_total[5m]) > 5
+        for: 5m
+        labels:
+          severity: critical
+          service: sentiment-analysis
+          component: ai-service
+        annotations:
+          summary: "Taux d'erreur élevé sur l'analyse de sentiment"
+          description: "Plus de 5 erreurs par seconde ont été détectées sur les 5 dernières minutes pour le service d'analyse de sentiment."
+          impact: "Les utilisateurs peuvent recevoir des réponses d'erreur"
+          action: "Vérifier les logs d'application et la connectivité vers Hugging Face"
+
+      # Alerte sur l'absence de requêtes (service potentiellement arrêté)
+      - alert: NoSentimentAnalysisRequests
+        expr: rate(sentiment_analysis_requests_total[10m]) == 0
+        for: 10m
+        labels:
+          severity: warning
+          service: sentiment-analysis
+          component: ai-service
+        annotations:
+          summary: "Aucune requête d'analyse de sentiment détectée"
+          description: "Aucune requête d'analyse de sentiment n'a été reçue au cours des 10 dernières minutes."
+          impact: "Le service pourrait être arrêté ou inaccessible"
+          action: "Vérifier que le service est en cours d'exécution et accessible"
+
+      # Alerte sur la charge système élevée (basée sur le nombre de requêtes)
+      - alert: HighSentimentAnalysisLoad
+        expr: rate(sentiment_analysis_requests_total[1m]) > 100
+        for: 2m
+        labels:
+          severity: warning
+          service: sentiment-analysis
+          component: ai-service
+        annotations:
+          summary: "Charge élevée sur le service d'analyse de sentiment"
+          description: "Le service traite plus de 100 requêtes par seconde depuis 2 minutes."
+          impact: "Risque de dégradation des performances"
+          action: "Considérer la mise à l'échelle horizontale ou l'optimisation du modèle"
+
+  - name: sentiment_analysis_performance
+    rules:
+      # Métriques dérivées pour le monitoring
+      - record: sentiment:request_rate_5m
+        expr: rate(sentiment_analysis_requests_total[5m])
+        labels:
+          component: ai-service
+
+      - record: sentiment:error_rate_5m
+        expr: rate(sentiment_analysis_errors_total[5m])
+        labels:
+          component: ai-service
+
+      - record: sentiment:latency_p95_5m
+        expr: histogram_quantile(0.95, rate(sentiment_analysis_duration_seconds_bucket[5m]))
+        labels:
+          component: ai-service
+
+      - record: sentiment:latency_p50_5m
+        expr: histogram_quantile(0.50, rate(sentiment_analysis_duration_seconds_bucket[5m]))
+        labels:
+          component: ai-service
+
+      # Ratio de succès
+      - record: sentiment:success_rate_5m
+        expr: 1 - (rate(sentiment_analysis_errors_total[5m]) / rate(sentiment_analysis_requests_total[5m]))
+        labels:
+          component: ai-service 

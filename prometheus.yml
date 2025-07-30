@@ -1,0 +1,52 @@
+# Configuration Prometheus pour monitoring du service IA
+# Compétence C8 : Paramétrage d'un service d'IA
+
+global:
+  scrape_interval: 15s      # Intervalle de collecte par défaut
+  evaluation_interval: 15s  # Intervalle d'évaluation des règles
+
+# Chargement des règles d'alerte
+rule_files:
+  - "alert.rules.yml"
+
+# Configuration des alertes (optionnel - nécessite Alertmanager)
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Jobs de scraping
+scrape_configs:
+  # Monitoring de Prometheus lui-même
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Monitoring du service d'analyse de sentiment
+  - job_name: 'sentiment-analysis'
+    static_configs:
+      - targets: ['localhost:8000']
+    scrape_interval: 5s       # Collecte fréquente pour la démo
+    metrics_path: '/metrics'
+    params:
+      format: ['prometheus']
+    static_configs:
+      - targets: ['localhost:8000']
+        labels:
+          service: 'huggingface-sentiment'
+          environment: 'demo'
+          component: 'ai-service'
+
+  # Monitoring système (optionnel - nécessite node_exporter)
+  # - job_name: 'node'
+  #   static_configs:
+  #     - targets: ['localhost:9100']
+
+# Configuration de stockage (optionnel)
+# storage:
+#   tsdb:
+#     path: /var/lib/prometheus/
+#     retention:
+#       time: 30d
+#       size: 1GB 

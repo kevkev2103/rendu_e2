@@ -1,10 +1,26 @@
-requests>=2.25.0
-pandas>=1.5.0
-matplotlib>=3.5.0
-seaborn>=0.11.0
-feedparser>=6.0.0
-transformers>=4.20.0
-torch>=2.0.0
-numpy>=1.21.0
-streamlit>=1.25.0
-plotly>=5.15.0 
+# Dépendances pour le projet C8 - Service IA d'Analyse de Sentiment
+# Compétence C8 : Paramétrage d'un service d'IA
+
+# Pipeline et modèles Hugging Face
+transformers
+huggingface_hub
+torch
+
+# Monitoring et métriques
+prometheus_client
+
+# Configuration et environnement
+python-dotenv
+
+# Utilitaires pour affichage et logging
+tabulate
+tiktoken
+
+# Dépendances optionnelles pour de meilleures performances
+# torch-audio  # Pour les modèles audio (optionnel)
+# accelerate   # Pour l'accélération GPU (optionnel)
+
+# Dépendances de développement (optionnel)
+# pytest        # Pour les tests
+# black         # Pour le formatage de code
+# flake8        # Pour le linting 
