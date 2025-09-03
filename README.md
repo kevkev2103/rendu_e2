@@ -18,7 +18,7 @@ Exemples :
 
 Vérifier Python
 
-python3 --version  # Doit être 3.8 ou plus récent
+python3 --version  
 
 
 Cloner le projet
@@ -30,9 +30,9 @@ cd rendu_e2
 Créer l'environnement virtuel
 
 python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou
-venv\Scripts\activate     # Windows
+source venv/bin/activate 
+ou
+venv\Scripts\activate    
 
 
 Installer les dépendances
@@ -97,7 +97,7 @@ curl http://localhost:8000/metrics
 
 Interface web Prometheus (optionnel) :
 
-sudo apt install prometheus        # Installer Prometheus (Ubuntu/Debian)
+sudo apt install prometheus        
 prometheus --config.file=prometheus.yml
 
 
@@ -149,13 +149,13 @@ pip install transformers huggingface_hub
 Erreur d'authentification Hugging Face
 
 cat .env
-# Doit contenir : HUGGINGFACE_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Doit contenir : HUGGINGFACE_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 Port 8000 déjà utilisé
 Modifier dans demo_sentiment.py :
 
-def start_metrics_server(port: int = 8001):  # Changer 8000 en 8001
+def start_metrics_server(port: int = 8001):  
 
 
 Modèle trop lent
